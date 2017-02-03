@@ -2,18 +2,18 @@
 
 Adds a {{ plural }} and {{ name }} filters to Twig templating engine for Russian pluralization and declenation.
 
-```blade
-    <div>
-    {{ новость | plural(252) }} от {{ Иванов Иван Иванович|name(m', 'genetivus') }}
-    </div>
+```twig
+<div>
+{{ 'новость' | plural(252) }} от {{ 'Иванов Иван Иванович'|name('m', 'genetivus') }}
+</div>
 ```
 
 Will be compiled in
 
 ```html
-    <div>
-    252 новости от Иванова Ивана Ивановича
-    </div>
+<div>
+252 новости от Иванова Ивана Ивановича
+</div>
 ```
 
 - `{{ $word|plural($count) }}` - Get plural form of word. Just pass count of objects and noun.

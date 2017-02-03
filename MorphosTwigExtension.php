@@ -1,7 +1,6 @@
 <?php
 namespace morphos;
 
-use morphos\Russian\nameCase;
 use morphos\Russian\Plurality;
 
 class MorphosTwigExtension extends \Twig_Extension {
@@ -12,12 +11,12 @@ class MorphosTwigExtension extends \Twig_Extension {
         );
     }
 
-    public function pluralFilter($count, $word) {
-        return Plurality::pluralize($word, $count);
+    public function pluralFilter($word, $count) {
+        return $count.' '.Plurality::pluralize($word, $count);
     }
 
     public function nameFilter($name, $gender, $case) {
-        return nameCase($name, $case, $gender);
+        return \morphos\Russian\nameCase($name, $case, $gender);
     }
 
     public function getName() {

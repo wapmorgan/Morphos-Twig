@@ -8,7 +8,7 @@ Adds a {{ plural }} and {{ name }} filters to Twig templating engine for Russian
 
 ```twig
 <div>
-{{ 'новость' | plural(252) }} от {{ 'Иванов Иван Иванович'|name('m', 'genetivus') }}
+{{ 'новость' | plural(252) }} от {{ 'Иванов Иван Иванович'|name('genetivus') }}
 </div>
 ```
 
@@ -21,7 +21,8 @@ Will be compiled in
 ```
 
 - `{{ $word|plural($count) }}` - Get plural form of word. Just pass count of objects and noun.
-- `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (m or w) and case (genetivus, dativus, accusative, ablativus, praepositionalis).
+- `{{ $name|name($case) }}` - Get any case of fullname with gender detection.
+- `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (m or w or null) and case (genetivus, dativus, accusative, ablativus, praepositionalis).
 
 ## Installation
 

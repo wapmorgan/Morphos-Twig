@@ -15,8 +15,11 @@ class MorphosTwigExtension extends \Twig_Extension {
         return $count.' '.Plurality::pluralize($word, $count);
     }
 
-    public function nameFilter($name, $gender, $case) {
-        return \morphos\Russian\nameCase($name, $case, $gender);
+    public function nameFilter($name, $gender = null, $case = null) {
+        if ($case === null)
+            return \morphos\Russian\nameCase($name, $gender);
+        else
+            return \morphos\Russian\nameCase($name, $case, $gender);
     }
 
     public function getName() {

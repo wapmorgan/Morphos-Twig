@@ -5,7 +5,7 @@
     "keywords": ["twig", "morphology", "twig-extension"],
     "type": "twig-extension",
     "require": {
-        "wapmorgan/morphos": "*"
+        "wapmorgan/morphos": "^2.2.3"
     },
     "autoload": {
         "psr-4": {

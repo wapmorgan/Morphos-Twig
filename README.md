@@ -23,13 +23,12 @@ Will be compiled in
 ```
 - `{{ $word|plural($count) }}` - Get plural form of word. Just pass count of objects and noun.
 - `{{ $value|money($currency) }}` - Get money formatted as text string. Just pass value and currency (₽ or $ or € or ₴ or £).
-- `{{ $count|numeral }}` - Get numeral of a number. Just pass number.
+- `{{ $number|numeral }}` - Get numeral of a number. Just pass number.
 - `{{ $name|name($case) }}` - Get any case of fullname with gender detection.
 
-- `{{ $number|plural }}` - Get numeral of a number. Just pass number.
-- `{{ $number|plural($gender) }}` - Get numeral of a number. Just pass number and gender (m or f or n).
-- `{{ $word|plural($number) }}` - Get numeral with a pluralized word. Just pass number and noun.
-- `{{ $word|plural($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (m or f or n).
+- `{{ $number|numeral($gender) }}` - Get numeral of a number. Just pass number and gender (m or f or n).
+- `{{ $word|numeral($number) }}` - Get numeral with a pluralized word. Just pass number and noun.
+- `{{ $word|numeral($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (m or f or n).
 - `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (m or w or null) and case (genetivus, dativus, accusative, ablativus, praepositionalis).
 
 ## Installation

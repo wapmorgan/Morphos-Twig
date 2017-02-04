@@ -1,6 +1,6 @@
 {
     "name": "wapmorgan/morphos-twig",
-    "description": "Adds a {{ plural }}, {{ name }} and {{ numeral }} filters to Twig templating engine for Russian pluralization and declenation.",
+    "description": "Adds a {{ plural }}, {{ name }}, {{ numeral }} and {{ money }} filters to Twig templating engine for Russian pluralization and declenation.",
     "license": "MIT",
     "keywords": ["twig", "morphology", "twig-extension"],
     "type": "twig-extension",

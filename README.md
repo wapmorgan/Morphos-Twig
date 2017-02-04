@@ -8,7 +8,7 @@ Adds {{ plural }}, {{ name }}, {{ numeral }} and {{ money }} filters to Twig tem
 
 ```twig
 <div>
-{{ 'новость' | plural(252) }} от {{ 'Иванов Иван Иванович'|name('genetivus') }}
+{{ 'новость'|plural(252) }} от {{ 'Иванов Иван Иванович'|name('genetivus') }}
 {{ 'сообщение'|numeral(565, 'n') }} и {{ 123.50|money('₽') }} за Ваше отсутствие
 </div>
 ```

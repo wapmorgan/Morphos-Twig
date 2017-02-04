@@ -9,6 +9,7 @@ class MorphosTwigExtension extends \Twig_Extension {
     public function getFilters() {
         return array(
             new \Twig_SimpleFilter('plural', array($this, 'pluralFilter')),
+            new \Twig_SimpleFilter('money', array($this, 'moneyFilter')),
             new \Twig_SimpleFilter('numeral', array($this, 'numeralFilter')),
             new \Twig_SimpleFilter('name', array($this, 'nameFilter')),
         );
@@ -16,6 +17,46 @@ class MorphosTwigExtension extends \Twig_Extension {
 
     public function pluralFilter($word, $count) {
         return $count.' '.Plurality::pluralize($word, $count);
+    }
+
+    public function moneyFilter($value, $currency) {
+        $money_big = floor($value);
+        $money_little = floor($value * 100 % 100);
+        switch ($currency) {
+            case '₽':
+            case 'р':
+            case 'рубль':
+            case 'r':
+            case 'rub':
+                return $money_big.' '.Plurality::pluralize('рубль', $money_big).' '.$money_little.' '.Plurality::pluralize('копейка', $money_little);
+
+            case '₴':
+            case 'г':
+            case 'гривна':
+            case 'uah':
+                return $money_big.' '.Plurality::pluralize('гривна', $money_big).' '.$money_little.' '.Plurality::pluralize('копейка', $money_little);
+
+            case '$':
+            case 'доллар':
+            case 'u':
+            case 'usd':
+                return $money_big.' '.Plurality::pluralize('доллар', $money_big).' '.$money_little.' '.Plurality::pluralize('цент', $money_little);
+
+            case '€':
+            case 'евро':
+            case 'e':
+            case 'eur':
+            case 'euro':
+                return $money_big.' '.Plurality::pluralize('евро', $money_big).' '.$money_little.' '.Plurality::pluralize('цент', $money_little);
+
+            case '£':
+            case 'фунт':
+            case 'gbp':
+                return $money_big.' '.Plurality::pluralize('фунт', $money_big).' '.$money_little.' '.Plurality::pluralize('пенни', $money_little);
+
+            default:
+                return $expression[0].' '.$expression[1];
+        }
     }
 
     public function numeralFilter($word, $count = null, $gender = NumeralCreation::MALE) {

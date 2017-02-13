@@ -21,11 +21,14 @@ Will be compiled in
 пятьсот шестьдесят пять сообщений и 123 рубля 50 копеек за Ваше отсутствие
 </div>
 ```
+
+Most popular filters:
 - `{{ $word|plural($count) }}` - Get plural form of word. Just pass count of objects and noun.
 - `{{ $value|money($currency) }}` - Get money formatted as text string. Just pass value and currency (₽ or $ or € or ₴ or £).
 - `{{ $number|numeral }}` - Get numeral of a number. Just pass number.
 - `{{ $name|name($case) }}` - Get any case of fullname with gender detection.
 
+Additional filters:
 - `{{ $number|numeral($gender) }}` - Get numeral of a number. Just pass number and gender (m or f or n).
 - `{{ $word|numeral($number) }}` - Get numeral with a pluralized word. Just pass number and noun.
 - `{{ $word|numeral($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (m or f or n).

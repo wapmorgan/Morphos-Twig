@@ -8,7 +8,7 @@ Adds {{ plural }}, {{ name }}, {{ numeral }} and {{ money }} filters to Twig tem
 
 ```twig
 <div>
-{{ 'новость'|plural(252) }} от {{ 'Иванов Иван Иванович'|name('genetivus') }}
+{{ 'новость'|plural(252) }} от {{ 'Иванов Иван Иванович'|name('родительный') }}
 {{ 'сообщение'|numeral(565, 'n') }} и {{ 123.50|money('₽') }} за Ваше отсутствие
 </div>
 ```
@@ -32,7 +32,7 @@ Additional filters:
 - `{{ $number|numeral($gender) }}` - Get numeral of a number. Just pass number and gender (m or f or n).
 - `{{ $word|numeral($number) }}` - Get numeral with a pluralized word. Just pass number and noun.
 - `{{ $word|numeral($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (m or f or n).
-- `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (m or w or null) and case (genetivus, dativus, accusative, ablativus, praepositionalis).
+- `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (m or w or null) and case (именительный, родительный, дательный, винительный, творительный, предложный).
 
 ## Installation
 

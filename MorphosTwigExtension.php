@@ -3,6 +3,7 @@ namespace morphos;
 
 use morphos\NumeralCreation;
 use morphos\Russian\CardinalNumeral;
+use morphos\Russian\OrdinalNumeral;
 use morphos\Russian\Plurality;
 
 class MorphosTwigExtension extends \Twig_Extension {
@@ -11,6 +12,7 @@ class MorphosTwigExtension extends \Twig_Extension {
             new \Twig_SimpleFilter('plural', array($this, 'pluralFilter')),
             new \Twig_SimpleFilter('money', array($this, 'moneyFilter')),
             new \Twig_SimpleFilter('numeral', array($this, 'numeralFilter')),
+            new \Twig_SimpleFilter('ordinal', array($this, 'ordinalFilter')),
             new \Twig_SimpleFilter('name', array($this, 'nameFilter')),
         );
     }
@@ -67,6 +69,10 @@ class MorphosTwigExtension extends \Twig_Extension {
         } else {
             return CardinalNumeral::generate($count, $gender).' '.Plurality::pluralize($word, $count);
         }
+    }
+
+    public function ordinalFilter($number, $gender = NumeralCreation::MALE) {
+        return OrdinalNumeral::generate($number, $gender);
     }
 
     public function nameFilter($name, $gender = null, $case = null) {

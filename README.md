@@ -73,7 +73,7 @@ Additional filters:
 
 - `{{ $number|ordinal($gender) }}` - Get ordinal of a number. Just pass number and gender (m or f or n) to use correct form of gender-dependent words (первый/первое/первая, второй/второе/вторая, etc).
     ```twig
-    {{ 'сообщение'|numeral(565, 'n') }}
+    {{ 'сообщение'|ordinal('n') }}
     ```
 
 

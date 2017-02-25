@@ -4,12 +4,13 @@
 [![Latest Stable Version](https://poser.pugx.org/wapmorgan/morphos-twig/version)](https://packagist.org/packages/wapmorgan/morphos-twig)
 [![License](https://poser.pugx.org/wapmorgan/morphos-twig/license)](https://packagist.org/packages/wapmorgan/morphos-twig)
 
-Adds {{ plural }}, {{ name }}, {{ numeral }} and {{ money }} filters to Twig templating engine for Russian pluralization and declenation.
+Adds {{ plural }}, {{ name }}, {{ numeral }}, {{ ordinal }} and {{ money }} filters to Twig templating engine for Russian pluralization and declenation.
 
 ```twig
 <div>
 {{ 'новость'|plural(252) }} от {{ 'Иванов Иван Иванович'|name('родительный') }}
 {{ 'сообщение'|numeral(565, 'n') }} и {{ 123.50|money('₽') }} за Ваше отсутствие
+Это Ваше {{ 351|ordinal('n') }} посещение нашего сайта за сегодня!
 </div>
 ```
 
@@ -19,20 +20,63 @@ Will be compiled in
 <div>
 252 новости от Иванова Ивана Ивановича
 пятьсот шестьдесят пять сообщений и 123 рубля 50 копеек за Ваше отсутствие
+Это Ваше триста пятьдесят первое посещение нашего сайта за сегодня!
 </div>
 ```
 
 Most popular filters:
 - `{{ $word|plural($count) }}` - Get plural form of word. Just pass count of objects and noun.
+    ```twig
+    {{ 'новость'|plural(251) }}
+    ```
+
 - `{{ $value|money($currency) }}` - Get money formatted as text string. Just pass value and currency (₽ or $ or € or ₴ or £).
-- `{{ $number|numeral }}` - Get numeral of a number. Just pass number.
+    ```twig
+    {{ 123.50|money('р') }}
+    ```
+
+- `{{ $number|numeral }}` - Get cardinal of a number. Just pass number.
+    ```twig
+    {{ 565|numeral }}
+    ```
+
+- `{{ $number|ordinal }}` - Get ordinal of a number. Just pass number.
+    ```twig
+    {{ 132|ordinal }}
+    ```
+
 - `{{ $name|name($case) }}` - Get any case of fullname with gender detection.
+    ```twig
+    {{ 'Иванов Иван Иванович'|name('родительный') }}
+    ```
 
 Additional filters:
-- `{{ $number|numeral($gender) }}` - Get numeral of a number. Just pass number and gender (m or f or n).
-- `{{ $word|numeral($number) }}` - Get numeral with a pluralized word. Just pass number and noun.
-- `{{ $word|numeral($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (m or f or n).
 - `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (m or w or null) and case (именительный, родительный, дательный, винительный, творительный, предложный).
+    ```twig
+    {{ 'Филимонов Игорь|name('m', 'дательный') }}
+    ```
+
+- `{{ $number|numeral($gender) }}` - Get numeral of a number. Just pass number and gender (m or f or n) to use correct form of gender-dependent words (один/одно/одна, два/две).
+    ```twig
+    {{ 565|numeral('n') }}
+    ```
+
+- `{{ $word|numeral($number) }}` - Get numeral with a pluralized word. Just pass number and noun.
+    ```twig
+    {{ 'дом'|numeral(221) }}
+    ```
+
+- `{{ $word|numeral($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (m or f or n) to use correct form of gender-dependent words (один/одно/одна, два/две).
+    ```twig
+    {{ 'сообщение'|numeral(565, 'n') }}
+    ```
+
+- `{{ $number|ordinal($gender) }}` - Get ordinal of a number. Just pass number and gender (m or f or n) to use correct form of gender-dependent words (первый/первое/первая, второй/второе/вторая, etc).
+    ```twig
+    {{ 'сообщение'|numeral(565, 'n') }}
+    ```
+
+
 
 ## Installation
 

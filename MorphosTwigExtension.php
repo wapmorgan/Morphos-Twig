@@ -77,9 +77,9 @@ class MorphosTwigExtension extends \Twig_Extension {
 
     public function nameFilter($name, $gender = null, $case = null) {
         if ($case === null)
-            return \morphos\Russian\nameCase($name, $gender);
+            return \morphos\Russian\name($name, $gender);
         else
-            return \morphos\Russian\nameCase($name, $case, $gender);
+            return \morphos\Russian\name($name, $case, $gender);
     }
 
     public function getName() {

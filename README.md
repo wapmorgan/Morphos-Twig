@@ -51,12 +51,12 @@ Most popular filters:
     ```
 
 Additional filters:
-- `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (m or w or null) and case (именительный, родительный, дательный, винительный, творительный, предложный).
+- `{{ $name|name($gender, $case) }}` - Get any case of fullname. Just pass name, gender (`m` or `f` or null) and case (именительный, родительный, дательный, винительный, творительный, предложный).
     ```twig
     {{ 'Филимонов Игорь|name('m', 'дательный') }}
     ```
 
-- `{{ $number|numeral($gender) }}` - Get numeral of a number. Just pass number and gender (m or f or n) to use correct form of gender-dependent words (один/одно/одна, два/две).
+- `{{ $number|numeral($gender) }}` - Get numeral of a number. Just pass number and gender (`m` or `f` or `n`) to use correct form of gender-dependent words (один/одно/одна, два/две).
     ```twig
     {{ 565|numeral('n') }}
     ```
@@ -66,12 +66,12 @@ Additional filters:
     {{ 'дом'|numeral(221) }}
     ```
 
-- `{{ $word|numeral($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (m or f or n) to use correct form of gender-dependent words (один/одно/одна, два/две).
+- `{{ $word|numeral($number, $gender) }}` - Get numeral with a pluralized word. Just pass number, noun and gender (`m` or `f` or `n`) to use correct form of gender-dependent words (один/одно/одна, два/две).
     ```twig
     {{ 'сообщение'|numeral(565, 'n') }}
     ```
 
-- `{{ $number|ordinal($gender) }}` - Get ordinal of a number. Just pass number and gender (m or f or n) to use correct form of gender-dependent words (первый/первое/первая, второй/второе/вторая, etc).
+- `{{ $number|ordinal($gender) }}` - Get ordinal of a number. Just pass number and gender (`m` or `f` or `n`) to use correct form of gender-dependent words (первый/первое/первая, второй/второе/вторая, etc).
     ```twig
     {{ 'сообщение'|ordinal('n') }}
     ```

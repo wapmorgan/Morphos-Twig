@@ -1,6 +1,7 @@
 <?php
 namespace morphos;
 
+use morphos\Cases;
 use morphos\NumeralCreation;
 use morphos\Russian\CardinalNumeral;
 use morphos\Russian\OrdinalNumeral;
@@ -63,16 +64,16 @@ class MorphosTwigExtension extends \Twig_Extension {
 
     public function numeralFilter($word, $count = null, $gender = NumeralCreation::MALE) {
         if ($count === null) {
-            return CardinalNumeral::generate($word);
+            return CardinalNumeral::getCase($word, Cases::NOMINATIVE);
         } else if (in_array($count, array('m', 'f', 'n'))) {
-            return CardinalNumeral::generate($word, $count);
+            return CardinalNumeral::getCase($word, Cases::NOMINATIVE, $count);
         } else {
-            return CardinalNumeral::generate($count, $gender).' '.Plurality::pluralize($word, $count);
+            return CardinalNumeral::getCase($count, Cases::NOMINATIVE, $gender).' '.Plurality::pluralize($word, $count);
         }
     }
 
     public function ordinalFilter($number, $gender = NumeralCreation::MALE) {
-        return OrdinalNumeral::generate($number, $gender);
+        return OrdinalNumeral::getCase($number, Cases::NOMINATIVE, $gender);
     }
 
     public function nameFilter($name, $gender = null, $case = null) {

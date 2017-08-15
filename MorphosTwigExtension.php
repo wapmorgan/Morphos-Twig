@@ -3,6 +3,7 @@ namespace morphos;
 
 use morphos\Russian\CardinalNumeralGenerator;
 use morphos\Russian\MoneySpeller;
+use morphos\Russian\NounPluralization;
 use morphos\Russian\OrdinalNumeralGenerator;
 use morphos\Russian\Plurality;
 
@@ -22,7 +23,7 @@ class MorphosTwigExtension extends \Twig_Extension {
     }
 
     public function moneyFilter($value, $currency) {
-        return MoneySpeller::spell($value, $currency);
+        return MoneySpeller::spell($value, $currency, MoneySpeller::SHORT_FORMAT);
     }
 
     public function numeralFilter($word, $count = null, $gender = Gender::MALE) {
@@ -31,7 +32,7 @@ class MorphosTwigExtension extends \Twig_Extension {
         } else if (in_array($count, array('m', 'f', 'n'))) {
             return CardinalNumeralGenerator::getCase($word, Cases::NOMINATIVE, $count);
         } else {
-            return CardinalNumeralGenerator::getCase($count, Cases::NOMINATIVE, $gender).' '.Plurality::pluralize($word, $count);
+            return CardinalNumeralGenerator::getCase($count, Cases::NOMINATIVE, $gender).' '. NounPluralization::pluralize($word, $count);
         }
     }
 

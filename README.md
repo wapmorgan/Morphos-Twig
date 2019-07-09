@@ -1,6 +1,5 @@
 # MorphosTwig
 
-[![Composer package](http://composer.network/badge/wapmorgan/morphos-twig)](https://packagist.org/packages/wapmorgan/morphos-twig)
 [![Latest Stable Version](https://poser.pugx.org/wapmorgan/morphos-twig/version)](https://packagist.org/packages/wapmorgan/morphos-twig)
 [![License](https://poser.pugx.org/wapmorgan/morphos-twig/license)](https://packagist.org/packages/wapmorgan/morphos-twig)
 
